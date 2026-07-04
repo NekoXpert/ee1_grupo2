@@ -1,0 +1,16 @@
+[
+  {
+    "nombre": "Demo",
+    "apellido": "LuckyAir",
+    "email": "demo@luckyair.com",
+    "pass": "lucky123",
+    "pais": "PE"
+  },
+  {
+    "nombre": "Invitado",
+    "apellido": "Prueba",
+    "email": "invitado@luckyair.com",
+    "pass": "lucky456",
+    "pais": "CN"
+  }
+]

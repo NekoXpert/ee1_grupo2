@@ -362,6 +362,19 @@ function guardarConfirmacionPago() {
     };
 
     localStorage.setItem('la_ultima_compra', JSON.stringify(confirmacion));
+
+    // CREATE (CRUD): registra la compra como una reserva persistida,
+    // para que aparezca en "Mis reservas" y se pueda validar su ticket.
+    if (window.ReservasCrud) {
+      const nombre = (document.getElementById('p-nombre')?.value || '').trim();
+      const apellido = (document.getElementById('p-apellido')?.value || '').trim();
+      window.ReservasCrud.crearDesdeCompra({
+        vuelo: confirmacion.vuelo,
+        ruta: confirmacion.ruta,
+        total: confirmacion.total,
+        pasajero: [nombre, apellido].filter(Boolean).join(' ') || 'Titular',
+      });
+    }
   } catch {
     console.warn('checkout.js: no se pudo guardar la confirmacion en localStorage.');
   }
