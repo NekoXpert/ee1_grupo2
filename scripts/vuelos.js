@@ -19,7 +19,7 @@
   };
 
   // Vuelos de ejemplo (datos mock para la demostracion).
-  const VUELOS = [
+  const VUELOS_SEED = [
     { codigo: 'LA8201', origen: 'KMG', destino: 'DLU', salida: '06:30', llegada: '07:15', duracion: '45 min', precio: 380 },
     { codigo: 'LA8203', origen: 'KMG', destino: 'DLU', salida: '12:45', llegada: '13:30', duracion: '45 min', precio: 420 },
     { codigo: 'LA8207', origen: 'KMG', destino: 'DLU', salida: '18:10', llegada: '18:55', duracion: '45 min', precio: 350 },
@@ -29,6 +29,12 @@
     { codigo: 'LA9105', origen: 'KMG', destino: 'SHA', salida: '14:00', llegada: '17:25', duracion: '3 h 25 min', precio: 1150 },
     { codigo: 'LA8202', origen: 'DLU', destino: 'KMG', salida: '08:00', llegada: '08:45', duracion: '45 min', precio: 360 },
   ];
+
+  // Fuente de vuelos: usa el catalogo persistido en localStorage
+  // (crud/vuelos-crud.js) si esta disponible; si no, usa la semilla.
+  const VUELOS = (window.VuelosCrud && window.VuelosCrud.listar().length)
+    ? window.VuelosCrud.listar()
+    : VUELOS_SEED;
 
   // Estados de vuelo de ejemplo (mock).
   const ESTADOS = {
@@ -152,7 +158,10 @@
       ok = LA.validarVacio(apellido, 'El apellido') && ok;
       if (!ok) { salida.innerHTML = ''; return; }
 
-      const reserva = RESERVAS[codigo.value.trim().toUpperCase()];
+      // Busca primero en las reservas persistidas (crud/reservas-crud.js),
+      // que incluyen las creadas al comprar; si no, usa las reservas mock.
+      const cod = codigo.value.trim().toUpperCase();
+      const reserva = (window.ReservasCrud && window.ReservasCrud.buscarPorCodigo(cod)) || RESERVAS[cod];
       if (!reserva) {
         salida.innerHTML = `<p class="la-aviso la-aviso--error">No encontramos la reserva ${codigo.value.toUpperCase()}. Revisa el codigo.</p>`;
         return;
@@ -244,6 +253,8 @@
     const monto = calc.querySelector('#re-monto');
     const reSalida = calc.querySelector('#re-salida');
 
+    let ultimaDevolucion = 0; // recuerda la ultima cotizacion para el registro CRUD
+
     // Calcula la devolucion segun tarifa y motivo.
     function calcular() {
       const valor = Number(monto.value) || 0;
@@ -254,6 +265,7 @@
       } else {
         devolucion = Math.max(0, valor - 100); // Basica: menos cargo administrativo
       }
+      ultimaDevolucion = devolucion;
       reSalida.textContent = `Reembolso estimado: CNY ${devolucion} de CNY ${valor}`;
       // Guarda la ultima cotizacion para persistencia.
       try {
@@ -272,6 +284,16 @@
       ok = LA.validarEmail(email) && ok;
       ok = (motivo.value ? LA.limpiarError(motivo) : LA.mostrarError(motivo, 'Elige un motivo.')) && ok;
       if (!ok) return;
+      // CREATE: guarda la solicitud de reembolso en localStorage (CRUD).
+      if (window.ReembolsosCrud) {
+        window.ReembolsosCrud.crear({
+          codigo: codigo.value.trim().toUpperCase(),
+          email: email.value.trim(),
+          motivo: motivo.value,
+          devolucion: ultimaDevolucion,
+        });
+        if (window.ReembolsosCrud.render) window.ReembolsosCrud.render();
+      }
       // Reutiliza el modal :target del HTML para confirmar.
       window.location.hash = 'gracias-reembolso';
     });

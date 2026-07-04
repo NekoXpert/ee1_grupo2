@@ -1328,3 +1328,51 @@ header > div:last-child .btn-gold { width: auto; }
 
 
 
+
+/* ============================================================
+   CRUD en localStorage (EE4) - Autor: Felipe Reyes Ingunza
+   Paneles con las listas dinamicas de registros (empresas,
+   estudiantes, reservas, reembolsos) y botones de accion.
+   ============================================================ */
+.crud-panel {
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+  border-top: 3px solid var(--red);
+}
+.crud-panel > h3 {
+  margin: 0 0 var(--space-4);
+  color: var(--red);
+  font-size: 1.1rem;
+}
+.crud-vacio {
+  margin: 0;
+  color: var(--muted);
+  font-style: italic;
+}
+.crud-lista table { margin: 0; }
+.crud-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+/* Boton compacto para las tablas CRUD */
+.btn-sm {
+  padding: var(--space-1) var(--space-3);
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+/* Boton destructivo (Eliminar / Cancelar): rojo en contorno */
+.btn-danger {
+  background: var(--white);
+  color: var(--red);
+  border: 1px solid var(--red);
+}
+.btn-danger:hover,
+.btn-danger:focus-visible {
+  background: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+}
