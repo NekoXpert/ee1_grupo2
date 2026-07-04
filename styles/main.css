@@ -1376,3 +1376,95 @@ header > div:last-child .btn-gold { width: auto; }
   color: var(--white);
   border-color: var(--red);
 }
+
+/* ============================================================
+   Motion + mobile-first (EE4) - Autor: Felipe Reyes Ingunza
+   Estandar web-animada en CSS puro: solo se animan transform y
+   opacity (GPU), easing ease-out-expo, y se respeta la
+   preferencia de menos movimiento del usuario.
+   ============================================================ */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-reveal: 0.8s;
+  --dur-micro: 0.2s;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* Estado previo al reveal (lo aplica animaciones.js solo bajo el fold) */
+.pre-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-reveal) var(--ease-out-expo),
+    transform var(--dur-reveal) var(--ease-out-expo);
+}
+.pre-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Header pegajoso: siempre visible; sombra al bajar (is-stuck) */
+body > header {
+  position: sticky;
+  top: 0;
+}
+body > header.is-stuck {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+}
+
+/* Micro-interacciones (solo transform/opacity + color) */
+.btn:active,
+button:active {
+  transform: scale(0.97);
+}
+.cards > article {
+  transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s ease;
+}
+.cards > article:hover {
+  transform: translateY(-4px);
+}
+
+/* Subrayado dorado que crece (scaleX) en la nav del header */
+header nav a {
+  position: relative;
+}
+header nav a::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 1px;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-out-expo);
+}
+header nav a:hover::after,
+header nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Mobile first: menos ruido y toques comodos en pantallas chicas */
+@media (max-width: 480px) {
+  header .tagline { display: none; }
+}
+@media (pointer: coarse) {
+  form button[type="submit"],
+  .btn { min-height: 44px; }
+}
+@media (min-width: 1024px) {
+  /* el aside pegajoso baja para no quedar bajo el header sticky */
+  main:has(> aside) > aside { top: 120px; }
+}
+
+/* Accesibilidad: sin movimiento si el usuario lo pide */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .pre-reveal { opacity: 1; transform: none; transition: none; }
+  .cards > article,
+  header nav a::after { transition: none; }
+  .cards > article:hover { transform: none; }
+}
