@@ -1,0 +1,10 @@
+[
+  { "codigo": "LA8201", "origen": "KMG", "destino": "DLU", "salida": "06:30", "llegada": "07:15", "duracion": "45 min", "precio": 380 },
+  { "codigo": "LA8203", "origen": "KMG", "destino": "DLU", "salida": "12:45", "llegada": "13:30", "duracion": "45 min", "precio": 420 },
+  { "codigo": "LA8207", "origen": "KMG", "destino": "DLU", "salida": "18:10", "llegada": "18:55", "duracion": "45 min", "precio": 350 },
+  { "codigo": "LA8310", "origen": "KMG", "destino": "JHG", "salida": "08:00", "llegada": "09:05", "duracion": "1 h 5 min", "precio": 540 },
+  { "codigo": "LA8412", "origen": "KMG", "destino": "LJG", "salida": "07:20", "llegada": "08:10", "duracion": "50 min", "precio": 460 },
+  { "codigo": "LA9001", "origen": "KMG", "destino": "PEK", "salida": "09:30", "llegada": "13:20", "duracion": "3 h 50 min", "precio": 1280 },
+  { "codigo": "LA9105", "origen": "KMG", "destino": "SHA", "salida": "14:00", "llegada": "17:25", "duracion": "3 h 25 min", "precio": 1150 },
+  { "codigo": "LA8202", "origen": "DLU", "destino": "KMG", "salida": "08:00", "llegada": "08:45", "duracion": "45 min", "precio": 360 }
+]

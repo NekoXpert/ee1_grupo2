@@ -1,0 +1,47 @@
+[
+  {
+    "id": "kunming",
+    "nombre": "Kunming",
+    "region": "Yunnan",
+    "descripcion": "La ciudad de la eterna primavera, puerta de entrada a Yunnan.",
+    "imagen": "images/kunming.jpg",
+    "precioDesde": 350,
+    "lugares": ["Bosque de Piedra", "Lago Dianchi", "Templo Yuantong"]
+  },
+  {
+    "id": "dali",
+    "nombre": "Dali",
+    "region": "Yunnan",
+    "descripcion": "Ciudad antigua junto al lago Erhai, entre montanas y pagodas.",
+    "imagen": "images/dali.jpg",
+    "precioDesde": 350,
+    "lugares": ["Lago Erhai", "Tres Pagodas", "Ciudad antigua de Dali"]
+  },
+  {
+    "id": "lijiang",
+    "nombre": "Lijiang",
+    "region": "Yunnan",
+    "descripcion": "Casco antiguo Patrimonio de la Humanidad y cultura naxi.",
+    "imagen": "images/lijiang.jpg",
+    "precioDesde": 460,
+    "lugares": ["Casco antiguo", "Montana Nevada del Dragon de Jade", "Estanque del Dragon Negro"]
+  },
+  {
+    "id": "xishuangbanna",
+    "nombre": "Xishuangbanna",
+    "region": "Yunnan",
+    "descripcion": "Selva tropical, elefantes asiaticos y cultura dai en el sur de Yunnan.",
+    "imagen": "images/xishuangbanna.jpg",
+    "precioDesde": 540,
+    "lugares": ["Jardin botanico tropical", "Templos dai", "Mercado nocturno de Gaozhuang"]
+  },
+  {
+    "id": "shangrila",
+    "nombre": "Shangri-La",
+    "region": "Yunnan",
+    "descripcion": "Meseta tibetana, monasterios y paisajes de alta montana.",
+    "imagen": "images/shangrila.jpg",
+    "precioDesde": 620,
+    "lugares": ["Monasterio Songzanlin", "Parque Nacional Pudacuo", "Ciudad antigua de Dukezong"]
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "backpacker",
+    "titulo": "Promo backpacker Yunnan",
+    "descripcion": "Kunming - Dali - Lijiang en un pase multi-destino para mochileros.",
+    "precio": 890,
+    "imagen": "images/promo-backpacker.jpg",
+    "vigencia": "2026-12-31",
+    "destacada": true
+  },
+  {
+    "id": "tropical",
+    "titulo": "Vuelo tropical Xishuangbanna",
+    "descripcion": "Ida y vuelta desde Kunming a la selva tropical del sur.",
+    "precio": 650,
+    "imagen": "images/promo-tropical.jpg",
+    "vigencia": "2026-10-31",
+    "destacada": true
+  },
+  {
+    "id": "invierno",
+    "titulo": "Vacaciones de invierno",
+    "descripcion": "Descuento especial en rutas a Shangri-La y Lijiang.",
+    "precio": 1100,
+    "imagen": "images/promo-invierno.jpg",
+    "vigencia": "2027-02-28",
+    "destacada": true
+  },
+  {
+    "id": "flex",
+    "titulo": "Tarifa Flex sin recargo",
+    "descripcion": "Cambia la fecha de tu vuelo sin costo en rutas dentro de Yunnan.",
+    "precio": 420,
+    "imagen": "images/flota-737.jpg",
+    "vigencia": "2026-12-31",
+    "destacada": false
+  }
+]

@@ -90,11 +90,40 @@ Esta versión 3.0 cubre la Unidad de Aprendizaje 3: **interactividad real con Ja
 La versión final integra un **CRUD completo persistido en localStorage** y el
 **consumo de datos con Fetch/JSON**, cerrando las Unidades de Aprendizaje UA1–UA4.
 
+### Arquitectura por capas (separación de responsabilidades)
+
+El código está dividido en capas con responsabilidad única, usando **ES Modules**
+(`import`/`export`, páginas cargadas con `<script type="module">`):
+
+```
+scripts/
+├── database/    → SOLO datos (JSON): destinos, ofertas, paquetes, users, vuelos
+├── services/    → SOLO acceso a datos y reglas (la "API interna"): clases con
+│                  métodos estáticos (DestinoService, OfertaService, VueloService,
+│                  AuthService, UsuarioService) que hacen fetch de los JSON y
+│                  persisten/leen en localStorage
+├── pages/       → SOLO controlan UNA página (importan servicios y pintan el DOM):
+│                  index.js, destinos.js, vuelos.js, login.js, mi-cuenta.js
+├── shared/      → Reutilizable en TODAS las páginas: render.js (plantillas +
+│                  escape anti-XSS + rutas de assets) y sesion.js
+├── crud/        → Motor CRUD genérico + repositorios en localStorage
+└── *.js         → Scripts de página EE3 (validacion, main, cuentas, etc.)
+```
+
+**Flujo de datos:** JSON Database (`scripts/database/*.json`) → Service (fetch +
+reglas) → Page (render en el DOM) → Usuario. Los datos NO están en el HTML: se
+inyectan con JavaScript tras el fetch. `VueloService` además siembra el JSON en
+localStorage (`la_db_vuelos`), la misma tabla que edita el CRUD, y `AuthService`
+siembra cuentas demo desde `users.json` (prueba: `demo@luckyair.com` / `lucky123`).
+
 ### Consumo de datos (Fetch + JSON)
 
-`scripts/lucky-points.js` obtiene el catálogo de canje desde `data/site-data.json`
-con `fetch()`, lo renderiza dinámicamente y permite filtrarlo por categoría
-(vuelos / regalos / experiencias), con manejo de error si la carga falla.
+- `scripts/services/*.service.js` consumen la base JSON de `scripts/database/` con
+  `fetch()` y caché en memoria; las páginas renderizan grillas y tablas dinámicas
+  (ofertas del home, guía de destinos, paquetes, tablero de salidas).
+- `scripts/lucky-points.js` obtiene el catálogo de canje desde `data/site-data.json`
+  con `fetch()`, lo renderiza dinámicamente y permite filtrarlo por categoría
+  (vuelos / regalos / experiencias), con manejo de error si la carga falla.
 
 ### CRUD en localStorage (`scripts/crud/`)
 
@@ -149,6 +178,10 @@ ee1_grupo2/
 ├── .gitignore
 ├── /pages/                     (páginas internas: 15 .html)
 ├── /scripts/                   (JavaScript vanilla)
+│   ├── /database/              (base de datos JSON: 5 archivos)
+│   ├── /services/              (capa de servicios ES Modules: 5 clases)
+│   ├── /pages/                 (controladores de página ES Modules)
+│   ├── /shared/                (módulos reutilizables: render, sesion)
 │   └── /crud/                  (motor + módulos CRUD en localStorage)
 ├── /styles/                    (main.css)
 ├── /data/                      (site-data.json - Fetch/JSON)

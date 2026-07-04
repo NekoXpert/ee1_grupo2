@@ -1,0 +1,26 @@
+[
+  {
+    "id": "yunnan-clasico",
+    "nombre": "Yunnan clasico - 7 dias",
+    "destinos": ["Kunming", "Dali", "Lijiang"],
+    "dias": 7,
+    "precio": 2890,
+    "incluye": ["Vuelos internos", "Hotel 3 estrellas", "Guia en espanol"]
+  },
+  {
+    "id": "aventura-tropical",
+    "nombre": "Aventura tropical - 5 dias",
+    "destinos": ["Kunming", "Xishuangbanna"],
+    "dias": 5,
+    "precio": 2150,
+    "incluye": ["Vuelos internos", "Hotel", "Tour por la selva"]
+  },
+  {
+    "id": "ruta-tibetana",
+    "nombre": "Ruta tibetana - 6 dias",
+    "destinos": ["Lijiang", "Shangri-La"],
+    "dias": 6,
+    "precio": 3400,
+    "incluye": ["Vuelos internos", "Hotel boutique", "Entradas a parques"]
+  }
+]
