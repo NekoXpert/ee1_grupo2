@@ -159,6 +159,20 @@ Auditoría (DevTools + pruebas funcionales en navegador) y hallazgos corregidos 
 eliminación de la dependencia de Supabase, favicon (evita 404), escape anti-XSS en
 las tablas CRUD y verificación de accesibilidad (labels, alt, `aria-live`, skip link).
 
+### UI, motion y mobile-first
+
+- **Movimiento intencional** (`scripts/animaciones.js`, JS puro): scroll-reveal de
+  secciones con stagger en tarjetas, header sticky con sombra al bajar y
+  micro-interacciones (lift de cards, subrayado animado en la nav, presión de
+  botones). Solo se animan `transform`/`opacity` (GPU), se respeta
+  `prefers-reduced-motion` y hay fallback: nada queda oculto si el JS falla.
+- **Mobile-first**: imágenes de contenido con `loading="lazy"` + `decoding="async"`,
+  tagline oculto en pantallas chicas, objetivos táctiles de 44px mínimo y grillas
+  que escalan de 1 a 4 columnas.
+- **Limpieza**: se eliminaron duplicados y archivos sin uso (carpeta `assets/`
+  duplicada, logos sin referencia, `.gitkeep` obsoletos, funciones muertas) y se
+  reemplazó un video inexistente por su fotograma para no dejar recursos rotos.
+
 ## Cómo probar el sitio
 
 1. Clona el repositorio y entra a la carpeta.
@@ -186,7 +200,7 @@ ee1_grupo2/
 ├── /styles/                    (main.css)
 ├── /data/                      (site-data.json - Fetch/JSON)
 ├── /docs/                      (quality.md - evidencia de calidad EE4)
-└── /images/ /assets/           (recursos)
+└── /images/                    (recursos graficos, sin duplicados)
 ```
 
 ## Roadmap de evidencias evaluativas

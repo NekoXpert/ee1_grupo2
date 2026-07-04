@@ -92,16 +92,6 @@
     return limpiarError(campo);
   }
 
-  // Borra todos los mensajes de error de un formulario completo.
-  function limpiarFormulario(form) {
-    if (!form) return;
-    form.querySelectorAll('.error-msg').forEach((e) => (e.textContent = ''));
-    form.querySelectorAll('.campo-invalido').forEach((c) => {
-      c.classList.remove('campo-invalido');
-      c.removeAttribute('aria-invalid');
-    });
-  }
-
   // Publica las utilidades en el espacio de nombres compartido.
   LA.mostrarError = mostrarError;
   LA.limpiarError = limpiarError;
@@ -110,6 +100,4 @@
   LA.validarPatron = validarPatron;
   LA.validarLargo = validarLargo;
   LA.validarCheck = validarCheck;
-  LA.limpiarFormulario = limpiarFormulario;
-  LA.RE_EMAIL = RE_EMAIL;
 })();

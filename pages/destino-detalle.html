@@ -103,7 +103,7 @@
     <section aria-labelledby="galeria-title">
       <h2 id="galeria-title">Galeria</h2>
       <figure id="galeria-carrusel" aria-live="polite">
-        <img id="galeria-imagen" src="../images/kunming-shilin.jpg" alt="Formaciones rocosas del Bosque de Piedra en Shilin" width="800" height="400">
+        <img loading="lazy" decoding="async" id="galeria-imagen" src="../images/kunming-shilin.jpg" alt="Formaciones rocosas del Bosque de Piedra en Shilin" width="800" height="400">
         <figcaption id="galeria-texto">Bosque de Piedra (Shilin)</figcaption>
       </figure>
       <p>
@@ -114,13 +114,11 @@
 
     <section aria-labelledby="video-title">
       <h2 id="video-title">Video de Kunming</h2>
+      <!-- El video del tour se publicara mas adelante; mientras, se
+           muestra su fotograma para no dejar recursos rotos (404). -->
       <figure>
-        <video controls poster="../images/kunming-video-poster.jpg" width="640" height="360">
-          <source src="../assets/videos/kunming-tour.mp4" type="video/mp4">
-          <track kind="subtitles" src="../assets/videos/kunming-es.vtt" srclang="es" label="Espanol" default>
-          <p>Tu navegador no soporta video HTML5. <a href="../assets/videos/kunming-tour.mp4">Descarga el video</a>.</p>
-        </video>
-        <figcaption>Recorrido de 2 minutos por Kunming.</figcaption>
+        <img loading="lazy" decoding="async" src="../images/kunming-video-poster.jpg" alt="Fotograma del recorrido en video por Kunming" width="640" height="360">
+        <figcaption>Recorrido de 2 minutos por Kunming (video proximamente).</figcaption>
       </figure>
     </section>
 
@@ -251,6 +249,7 @@
 <!-- FIN FOOTER -->
 
 <script src="../scripts/main.js" defer></script>
+<script src="../scripts/animaciones.js" defer></script>
 <script src="../scripts/destino-detalle.js" defer></script>
 </body>
 </html>
