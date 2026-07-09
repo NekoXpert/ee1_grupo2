@@ -61,6 +61,7 @@
   <nav aria-label="Secciones de vuelos">
     <ul>
       <li><a href="#buscar">Buscar y comprar</a></li>
+      <li><a href="#gestion">Gestion de vuelos</a></li>
       <li><a href="#validar">Validar ticket</a></li>
       <li><a href="#estado">Estado de vuelo</a></li>
       <li><a href="#reembolsar">Reembolso</a></li>
@@ -133,6 +134,69 @@
       </div>
     </section>
   </section>
+
+  <!-- GESTION DE VUELOS (CRUD en localStorage) - Autor: Felipe Reyes Ingunza -->
+  <section id="gestion" aria-labelledby="gestion-title">
+    <div class="crud-toolbar">
+      <h2 id="gestion-title">Gestion de vuelos</h2>
+      <a href="#modal-vuelo" class="btn btn-primary" data-nuevo-vuelo>
+        <span aria-hidden="true">&#43;</span> Nuevo vuelo
+      </a>
+    </div>
+    <p>Alta, edicion y baja del catalogo que alimenta el buscador. Los cambios se guardan en tu navegador (localStorage) y funcionan sin conexion.</p>
+    <div class="crud-lista" id="vuelos-lista" aria-live="polite"></div>
+  </section>
+
+  <!-- Modal: alta / edicion de vuelo -->
+  <div class="modal" id="modal-vuelo" role="dialog" aria-labelledby="modal-vuelo-title" aria-modal="true">
+    <a href="#close" class="modal-backdrop" aria-label="Cerrar" tabindex="-1"></a>
+    <div class="modal-card modal-card--lg" tabindex="-1">
+      <a href="#close" class="modal-close" aria-label="Cerrar">&times;</a>
+      <h2 id="modal-vuelo-title">Nuevo vuelo</h2>
+      <p>Completa los datos del vuelo. Aparecera en el catalogo y en el buscador.</p>
+      <form name="form-vuelo">
+        <input type="hidden" name="id" id="vf-id">
+        <fieldset>
+          <legend>Datos del vuelo</legend>
+          <div class="modal-form-grid">
+            <p><label for="vf-codigo">Codigo:</label> <input type="text" id="vf-codigo" name="codigo" pattern="LA[0-9]{4}" placeholder="LA8201" required></p>
+            <p><label for="vf-precio">Precio (CNY):</label> <input type="number" id="vf-precio" name="precio" min="0" step="10" placeholder="380" required></p>
+            <p>
+              <label for="vf-origen">Origen:</label>
+              <select id="vf-origen" name="origen" required>
+                <option value="">Selecciona</option>
+                <option value="KMG">Kunming (KMG)</option>
+                <option value="DLU">Dali (DLU)</option>
+                <option value="JHG">Xishuangbanna (JHG)</option>
+                <option value="LJG">Lijiang (LJG)</option>
+                <option value="PEK">Beijing (PEK)</option>
+                <option value="SHA">Shanghai (SHA)</option>
+              </select>
+            </p>
+            <p>
+              <label for="vf-destino">Destino:</label>
+              <select id="vf-destino" name="destino" required>
+                <option value="">Selecciona</option>
+                <option value="KMG">Kunming (KMG)</option>
+                <option value="DLU">Dali (DLU)</option>
+                <option value="JHG">Xishuangbanna (JHG)</option>
+                <option value="LJG">Lijiang (LJG)</option>
+                <option value="PEK">Beijing (PEK)</option>
+                <option value="SHA">Shanghai (SHA)</option>
+              </select>
+            </p>
+            <p><label for="vf-salida">Salida:</label> <input type="time" id="vf-salida" name="salida" required></p>
+            <p><label for="vf-llegada">Llegada:</label> <input type="time" id="vf-llegada" name="llegada" required></p>
+            <p><label for="vf-duracion">Duracion:</label> <input type="text" id="vf-duracion" name="duracion" placeholder="45 min" required></p>
+          </div>
+        </fieldset>
+        <p class="modal-actions" style="justify-content: flex-end;">
+          <a href="#close" class="btn btn-outline">Cancelar</a>
+          <button type="submit" class="btn btn-primary">Guardar vuelo</button>
+        </p>
+      </form>
+    </div>
+  </div>
 
   <section id="validar" aria-labelledby="validar-title">
     <h2 id="validar-title">Validar tu ticket</h2>

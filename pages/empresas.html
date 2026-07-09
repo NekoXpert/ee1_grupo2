@@ -153,8 +153,20 @@
   </section>
 
   <section id="registro" aria-labelledby="reg-title">
-    <h2 id="reg-title">Registra tu empresa</h2>
-    <form action="#gracias-empresa" method="get" name="form-empresa">
+    <div class="crud-toolbar">
+      <h2 id="reg-title">Registra tu empresa</h2>
+      <a href="#modal-empresa" class="btn btn-primary"><span aria-hidden="true">&#43;</span> Registrar empresa</a>
+    </div>
+    <p>Completa el formulario en la ventana y tu empresa quedara guardada en este navegador (localStorage). La veras en la tabla de abajo, donde puedes editar su plan o eliminarla.</p>
+  </section>
+
+  <!-- Modal: formulario de registro de empresa -->
+  <div class="modal" id="modal-empresa" role="dialog" aria-labelledby="modal-empresa-title" aria-modal="true">
+    <a href="#close" class="modal-backdrop" aria-label="Cerrar" tabindex="-1"></a>
+    <div class="modal-card modal-card--lg" tabindex="-1">
+      <a href="#close" class="modal-close" aria-label="Cerrar">&times;</a>
+      <h2 id="modal-empresa-title">Registra tu empresa</h2>
+      <form action="#gracias-empresa" method="get" name="form-empresa">
       <fieldset>
         <legend>Datos de la empresa</legend>
         <p><label for="e-razon">Razon social:</label> <input type="text" id="e-razon" name="razon" required></p>
@@ -195,9 +207,13 @@
         <p><label><input type="radio" name="plan" value="business"> Business (CNY 500/mes)</label></p>
         <p><label><input type="radio" name="plan" value="enterprise"> Enterprise (a medida)</label></p>
       </fieldset>
-      <p><button type="submit"><span aria-hidden="true">&#128188;</span> Solicitar registro</button></p>
-    </form>
-  </section>
+      <p class="modal-actions" style="justify-content: flex-end;">
+        <a href="#close" class="btn btn-outline">Cancelar</a>
+        <button type="submit" class="btn btn-primary"><span aria-hidden="true">&#128188;</span> Solicitar registro</button>
+      </p>
+      </form>
+    </div>
+  </div>
 
   <!-- Modal: solicitud empresarial -->
   <div class="modal" id="gracias-empresa" role="dialog" aria-labelledby="gracias-empresa-title" aria-modal="true">

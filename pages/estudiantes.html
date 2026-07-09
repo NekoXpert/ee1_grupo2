@@ -132,7 +132,16 @@
     </table>
     </div>
 
-    <form action="#gracias-grupo" method="get" name="form-grupo">
+    <p><a href="#modal-grupo" class="btn btn-primary"><span aria-hidden="true">&#43;</span> Solicitar cotizacion grupal</a></p>
+  </section>
+
+  <!-- Modal: cotizacion grupal -->
+  <div class="modal" id="modal-grupo" role="dialog" aria-labelledby="modal-grupo-title" aria-modal="true">
+    <a href="#close" class="modal-backdrop" aria-label="Cerrar" tabindex="-1"></a>
+    <div class="modal-card modal-card--lg" tabindex="-1">
+      <a href="#close" class="modal-close" aria-label="Cerrar">&times;</a>
+      <h2 id="modal-grupo-title">Cotizacion grupal universitaria</h2>
+      <form action="#gracias-grupo" method="get" name="form-grupo">
       <fieldset>
         <legend>Solicitar cotizacion grupal</legend>
         <p><label for="g-institucion">Institucion educativa:</label> <input type="text" id="g-institucion" name="institucion" required></p>
@@ -146,15 +155,29 @@
         <p><label for="g-detalles">Detalles adicionales:</label></p>
         <p><textarea id="g-detalles" name="detalles" rows="4" cols="50" maxlength="500"></textarea></p>
       </fieldset>
-      <p><button type="submit"><span aria-hidden="true">&#128176;</span> Solicitar cotizacion</button></p>
-    </form>
-  </section>
+      <p class="modal-actions" style="justify-content: flex-end;">
+        <a href="#close" class="btn btn-outline">Cancelar</a>
+        <button type="submit" class="btn btn-primary"><span aria-hidden="true">&#128176;</span> Solicitar cotizacion</button>
+      </p>
+      </form>
+    </div>
+  </div>
 
   <section id="verificacion" aria-labelledby="ver-title">
-    <h2 id="ver-title">Verifica tu carnet universitario</h2>
-    <p>Valida una sola vez y usa tu descuento en cada vuelo.</p>
+    <div class="crud-toolbar">
+      <h2 id="ver-title">Verifica tu carnet universitario</h2>
+      <a href="#modal-verificacion" class="btn btn-primary"><span aria-hidden="true">&#43;</span> Verificar carnet</a>
+    </div>
+    <p>Valida una sola vez y usa tu descuento en cada vuelo. Tus verificaciones quedan guardadas en la tabla de abajo.</p>
+  </section>
 
-    <form action="#gracias-verificacion" method="get" name="form-verificacion" enctype="multipart/form-data">
+  <!-- Modal: verificacion de carnet -->
+  <div class="modal" id="modal-verificacion" role="dialog" aria-labelledby="modal-verificacion-title" aria-modal="true">
+    <a href="#close" class="modal-backdrop" aria-label="Cerrar" tabindex="-1"></a>
+    <div class="modal-card modal-card--lg" tabindex="-1">
+      <a href="#close" class="modal-close" aria-label="Cerrar">&times;</a>
+      <h2 id="modal-verificacion-title">Verifica tu carnet universitario</h2>
+      <form action="#gracias-verificacion" method="get" name="form-verificacion" enctype="multipart/form-data">
       <fieldset>
         <legend>Datos del estudiante</legend>
         <p><label for="est-nombre">Nombres completos:</label> <input type="text" id="est-nombre" name="nombre" required></p>
@@ -174,9 +197,13 @@
         <p><label for="est-foto">Foto del carnet (frontal):</label> <input type="file" id="est-foto" name="carnet_foto" accept="image/*" required></p>
       </fieldset>
       <p><label><input type="checkbox" name="acepto" required> Autorizo a Lucky Air a verificar mi condicion de estudiante</label></p>
-      <p><button type="submit"><span aria-hidden="true">&#128228;</span> Enviar verificacion</button></p>
-    </form>
-  </section>
+      <p class="modal-actions" style="justify-content: flex-end;">
+        <a href="#close" class="btn btn-outline">Cancelar</a>
+        <button type="submit" class="btn btn-primary"><span aria-hidden="true">&#128228;</span> Enviar verificacion</button>
+      </p>
+      </form>
+    </div>
+  </div>
 
   <!-- Modal: solicitud de cotizacion grupal -->
   <div class="modal" id="gracias-grupo" role="dialog" aria-labelledby="gracias-grupo-title" aria-modal="true">

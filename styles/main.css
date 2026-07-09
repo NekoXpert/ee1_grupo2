@@ -30,7 +30,10 @@
   --muted: #555555;
   --border: #dcdcdc;
   --radius: 6px;
-  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  /* Sombras en capas: una fina de contacto + una difusa de elevacion,
+     para dar profundidad real en vez de un solo blur plano. */
+  --shadow: 0 1px 2px rgba(20, 20, 30, 0.06), 0 4px 12px rgba(20, 20, 30, 0.09);
+  --shadow-lg: 0 6px 16px rgba(20, 20, 30, 0.10), 0 20px 44px rgba(20, 20, 30, 0.18);
   --container: 1200px;
   --space-1: 4px;
   --space-2: 8px;
@@ -491,8 +494,8 @@ main li { margin-bottom: var(--space-1); }
 .cards > article,
 .cards > li {
   background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border: 1px solid rgba(20, 20, 30, 0.08);
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -501,8 +504,9 @@ main li { margin-bottom: var(--space-1); }
 }
 .cards > article:hover,
 .cards > li:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(200, 16, 46, 0.18);
 }
 .cards > article > img,
 .cards > article > a > img,
@@ -1377,6 +1381,34 @@ header > div:last-child .btn-gold { width: auto; }
   border-color: var(--red);
 }
 
+/* Barra de acciones de un CRUD (titulo + boton "+ Nuevo" alineados) */
+.crud-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-4);
+}
+.crud-toolbar h2,
+.crud-toolbar h3 { margin: 0; }
+.crud-toolbar .btn { margin: 0; }
+
+/* Formulario dentro de un modal: sin margen suelto y en 2 columnas
+   comodas que colapsan a 1 en movil. */
+.modal-card--lg form { margin: 0; }
+.modal-card--lg fieldset { margin-bottom: var(--space-4); }
+.modal-card--lg fieldset:last-of-type { margin-bottom: var(--space-3); }
+.modal-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 var(--space-4);
+}
+.modal-form-grid > p { margin-top: 0; }
+@media (max-width: 560px) {
+  .modal-form-grid { grid-template-columns: 1fr; }
+}
+
 /* ============================================================
    Motion + mobile-first (EE4) - Autor: Felipe Reyes Ingunza
    Estandar web-animada en CSS puro: solo se animan transform y
@@ -1423,7 +1455,7 @@ button:active {
   transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s ease;
 }
 .cards > article:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
 
 /* Subrayado dorado que crece (scaleX) en la nav del header */
@@ -1467,4 +1499,8 @@ header nav a:focus-visible::after {
   .cards > article,
   header nav a::after { transition: none; }
   .cards > article:hover { transform: none; }
+  /* Los modales aparecen sin desplazamiento ni fundido animado. */
+  .modal-backdrop,
+  .modal-card,
+  .modal-icon { animation: none; }
 }
