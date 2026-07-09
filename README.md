@@ -8,6 +8,21 @@ Proyecto académico del curso **Fundamentos de Desarrollo Frontend (18612)** de 
 - Repositorio: https://github.com/NekoXpert/ee1_grupo2
 - Evidencia de calidad (Entregable 3): [`docs/quality.md`](docs/quality.md)
 
+**Flujo colaborativo — Pull Requests mergeados a `master`**
+
+| PR | Contenido |
+|---|---|
+| [#1](https://github.com/NekoXpert/ee1_grupo2/pull/1) | EE3 — JavaScript + localStorage |
+| [#2](https://github.com/NekoXpert/ee1_grupo2/pull/2) | EE3 — UX de marca (popup, tabs, resumen de compra, validación) |
+| [#3](https://github.com/NekoXpert/ee1_grupo2/pull/3) | EE3 — Integración de JavaScript |
+| [#4](https://github.com/NekoXpert/ee1_grupo2/pull/4) | EE4 — CRUD en localStorage + arquitectura por capas (ES Modules) |
+| [#5](https://github.com/NekoXpert/ee1_grupo2/pull/5) | EE4 — UI motion + mobile-first + Fetch/JSON + limpieza (integración v4.0) |
+
+Cada funcionalidad se trabajó en su propia rama (`ee3-javascript-felipe-reyes`,
+`ee4-crud-localstorage-felipe-reyes`, `ee4-ui-motion-mobile-felipe-reyes`) y se
+integró a `master` vía Pull Request. La contribución por integrante se evidencia
+en el historial de commits (`git log`) y en la tabla de [Equipo](#equipo).
+
 Sitio web diseñado para atender el caso de estudio internacional **E-commerce at Yunnan Lucky Air** (Berenguer, Cai, Li, Liu y Wang, 2008 - MIT, versión adaptada).
 
 ## Descripción del proyecto
