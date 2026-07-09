@@ -5,9 +5,10 @@ hallazgos detectados y correcciones aplicadas con su forma de verificacion.
 
 - **Sitio publicado:** https://nekoxpert.github.io/ee1_grupo2/
 - **Repositorio:** https://github.com/NekoXpert/ee1_grupo2
-- **Metodo de auditoria:** DevTools (consola y pestana Application/localStorage),
-  pruebas funcionales automatizadas end-to-end en navegador Chromium sobre un
-  servidor local (`python -m http.server`) y revision manual responsive
+- **Metodo de auditoria:** Google Lighthouse 12 sobre el sitio en vivo (ver
+  seccion 1.1), DevTools (consola y pestana Application/localStorage), pruebas
+  funcionales automatizadas end-to-end en navegador Chromium sobre un servidor
+  local (`python -m http.server`) y revision manual responsive
   (movil 375px / tablet 768px / desktop 1280px).
 
 ---
@@ -36,6 +37,36 @@ Las persistencias en `localStorage` se verificaron en DevTools > Application >
 Local Storage, con las claves: `la_db_empresas`, `la_db_estudiantes`,
 `la_db_cotizaciones`, `la_db_reservas`, `la_db_vuelos`, `la_db_reembolsos`,
 `la_cuentas`, `la_sesion`, `la_perfil`, `la_preferencias`, `la_ultima_compra`.
+
+### 1.1 Auditoria Lighthouse (sitio en vivo - GitHub Pages)
+
+Auditoria ejecutada con **Google Lighthouse 12** (Chrome headless, perfil movil)
+sobre el sitio publicado en https://nekoxpert.github.io/ee1_grupo2/. Los reportes
+HTML navegables y las capturas estan en [`docs/lighthouse/`](lighthouse/).
+
+| Pagina auditada            | Performance | Accesibilidad | Buenas practicas | SEO |
+|----------------------------|:-----------:|:-------------:|:----------------:|:---:|
+| Home (`index.html`)        |   **96**    |    **100**    |      **96**      |**100**|
+| Vuelos (`pages/vuelos.html`) |   **98**    |    **100**    |      **96**      |**100**|
+
+**Core Web Vitals (movil):**
+
+| Metrica                          |  Home  | Vuelos |
+|----------------------------------|:------:|:------:|
+| First Contentful Paint (FCP)     | 1.2 s  | 1.1 s  |
+| Largest Contentful Paint (LCP)   | 2.2 s  | 1.7 s  |
+| Total Blocking Time (TBT)        | 110 ms | 20 ms  |
+| Cumulative Layout Shift (CLS)    |   0    |   0    |
+| Speed Index                      | 3.7 s  | 3.7 s  |
+
+Capturas: [`home.png`](lighthouse/home.png) · [`vuelos.png`](lighthouse/vuelos.png).
+Reportes completos: [`home.report.html`](lighthouse/home.report.html) ·
+[`vuelos.report.html`](lighthouse/vuelos.report.html).
+
+Lecturas: Accesibilidad y SEO en 100 en ambas paginas; CLS = 0 (sin saltos de
+layout, gracias a `width`/`height` en imagenes); Performance 96-98 con el sitio
+desplegado en produccion. La pagina con mas JavaScript (`vuelos.html`, 6 scripts
+CRUD + `vuelos.js`) mantiene 98 de performance y 20 ms de bloqueo.
 
 ---
 
